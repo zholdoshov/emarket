@@ -1,8 +1,8 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="checkout">
+        <div class="shipping-form">
             <div class="box-element" id="form-wrapper">
                 <form id="form">
                     <div id="user-info">
@@ -45,9 +45,9 @@
             
         </div>
 
-        <div class="col-lg-6">
+        <div class="order-summary">
             <div class="box-element">
-                <a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+                <a  class="btn-back-to-cart" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
                 <hr>
                 <h3>Order Summary</h3>
                 <hr>
