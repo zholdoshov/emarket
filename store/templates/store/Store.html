@@ -9,12 +9,28 @@
             <h6 class="text"><strong>{{product.name}}</strong></h6>
             <hr>
     
-            <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart text">Add to Cart</button>
+            <button data-product={{product.id}} data-action="add" class="add-btn update-cart text">Add to Cart</button>
             <a class="text" style="text-decoration: none;" href="#">View</a>
             <h4  class="text price" style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
     
         </div>
     </div>
+    <div class="popup-image">
+        <span>&times;</span>
+        <img src="{{product.imageURL}}">
+    </div>
     {% endfor %}
 </div>
+
+<script>
+    document.querySelectorAll('.col-lg-4 img').forEach(thumbnail =>{
+        thumbnail.onclick = () =>{
+            document.querySelector('.popup-image').style.display = 'block';
+            document.querySelector('.popup-image img').src = thumbnail.getAttribute('src');
+        }
+    });
+    document.querySelector('.popup-image span').onclick = () =>{
+        document.querySelector('.popup-image').style.display = 'none';
+    }
+</script>
 {% endblock content %}

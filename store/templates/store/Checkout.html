@@ -15,9 +15,7 @@
                     </div>
                     
                     <div id="shipping-info">
-                        <hr>
-                        <p>Shipping Information:</p>
-                        <hr>
+                        <p class="text" style="font-size: 25px;">Shipping Information:</p>
                         <div class="form-field">
                             <input class="form-control" type="text" name="address" placeholder="Address..">
                         </div>
@@ -31,8 +29,16 @@
                             <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
                         </div>
                     </div>
-                    <hr>
-                    <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+                    <input style="font: 18px Arial;
+                    text-decoration: none;
+                    background-color: #695CFE;
+                    color: #fff;
+                    margin-top: 10px;
+                    padding: 2px 6px 2px 6px;
+                    border-top: 2px solid #CCCCCC;
+                    border-right: 2px solid #333333;
+                    border-bottom: 2px solid #333333;
+                    border-left: 2px solid #CCCCCC;" id="form-button" class="btn-continue" type="submit" value="Continue">
                 </form>
 
             </div>
@@ -40,16 +46,31 @@
             <br>
             <div class="box-element hidden" id="payment-info">
                 <small>Paypal Options</small>
-                <button id="make-payment">Make payment</button>
+                <button style="font: 16px Arial;
+                text-decoration: none;
+                background-color: #695CFE;
+                color: #fff;
+                padding: 2px 6px 2px 6px;
+                border-top: 2px solid #CCCCCC;
+                border-right: 2px solid #333333;
+                border-bottom: 2px solid #333333;
+                border-left: 2px solid #CCCCCC;" id="make-payment">Make payment</button>
             </div>
             
         </div>
 
         <div class="order-summary">
             <div class="box-element">
-                <a  class="btn-back-to-cart" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
-                <hr>
-                <h3>Order Summary</h3>
+                <a  class="btn-back-to-cart" style="font: 18px Arial;
+                text-decoration: none;
+                background-color: #695CFE;
+                color: #fff;
+                padding: 2px 6px 2px 6px;
+                border-top: 2px solid #CCCCCC;
+                border-right: 2px solid #333333;
+                border-bottom: 2px solid #333333;
+                border-left: 2px solid #CCCCCC;" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+                <h3 class="text" style="font-size: 25px;">Order Summary</h3>
                 <hr>
 
                 {% for item in items %}
@@ -59,10 +80,11 @@
                     <div style="flex:1"><p>${{item.product.price}}</p></div>
                     <div style="flex:1"><p>x{{item.quantity}}</p></div>
                 </div>
+                <hr>
                 {% endfor %}
 
-                <h5>Items:   {{order.get_cart_items}}</h5>
-                <h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
+                <h5 class="text">Items:   {{order.get_cart_items}}</h5>
+                <h5 class="text">Total:   ${{order.get_cart_total|floatformat:2}}</h5>
             </div>
         </div>
     </div>
