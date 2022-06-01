@@ -415,10 +415,6 @@ body.dark .home .text{
     display: flex;
 }
 
-.row .thumbnail:hover img{
-    transform: scale(1.1);
-}
-
 .row .popup-image{
     position: fixed;
     top: 0; left:0;

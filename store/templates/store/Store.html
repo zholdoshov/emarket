@@ -4,13 +4,13 @@
 <div class="row">
     {% for product in products %}
 	<div class="col-lg-4">
-        <img class="thumbnail" src="{{product.imageURL}}">
+        <img style="cursor: pointer;" class="thumbnail" src="{{product.imageURL}}">
         <div class="box-element product">
             <h6 class="text"><strong>{{product.name}}</strong></h6>
             <hr>
     
             <button data-product={{product.id}} data-action="add" class="add-btn update-cart text">Add to Cart</button>
-            <a class="text" style="text-decoration: none;" href="#">View</a>
+            <a class="text" style="text-decoration: none; cursor: pointer;">View</a>
             <h4  class="text price" style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
     
         </div>

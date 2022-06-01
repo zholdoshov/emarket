@@ -67,8 +67,8 @@
 
                     <li class="nav-link">
                         <a href="#">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Revenue</span>
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Profile</span>
                         </a>
                     </li>
 
@@ -106,7 +106,7 @@
             <div class="bottom-content">
                 <li class="">
                     <a href="{% url 'cart' %}">
-                        <i class='bx bx-basket icon'></i>
+                        <i class='bx bx-cart icon'></i>
                         <span id="cart-icon" class="text nav-text">Cart:</span>
                         <p class="text total-text" id="cart-total">{{cartItems}}</p>
                     </a>
@@ -131,7 +131,7 @@
 
     <div class="home">
         {% block content %}
-        <div class="text">Content</div>
+        
         {% endblock content %}
     </div>
 
