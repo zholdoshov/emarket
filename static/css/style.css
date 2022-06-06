@@ -140,7 +140,7 @@ header .image-text .profession{
 
 .sidebar header .toggle{
     position: absolute;
-    top: 50%;
+    top: 55%;
     right: -25px;
     transform: translateY(-50%) rotate(180deg);
     height: 25px;

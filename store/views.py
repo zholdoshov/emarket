@@ -13,34 +13,46 @@ from .forms import CreateUserForm
 
 # Create your views here.
 def register(request):
-    form = CreateUserForm()
+    if request.user.is_authenticated:
+        return redirect('store')
+    else:    
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'Account was created for ' + user)
+                return redirect('login')
 
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)
-            return redirect('login')
-
-    context = {'form': form}
-    return render(request, 'store/register.html', context)
+        context = {'form': form}
+        return render(request, 'store/register.html', context)
 
 
 def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('store')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
 
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
 
-        user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('store')
+            else:
+                messages.info(request, 'Username or password is incorrect!')
 
-        if user is not None:
-            login(request, user)
-            return redirect('store')
+        context = {}
+        return render(request, 'store/login.html', context)
 
-    context = {}
-    return render(request, 'store/login.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
 
 @login_required(login_url='login')
 def store(request):
@@ -61,6 +73,19 @@ def store(request):
     return render(request, 'store/store.html', context)
 
 
+@login_required(login_url='login')
+def profile(request):
+    context = {'user': request.user}
+    return render(request, 'store/profile.html', context)
+
+
+@login_required(login_url='login')
+def about(request):
+    context = {}
+    return render(request, 'store/about.html', context)
+
+
+@login_required(login_url='login')
 def cart(request):
 
     if request.user.is_authenticated:
@@ -77,6 +102,7 @@ def cart(request):
     return render(request, 'store/cart.html', context)
 
 
+@login_required(login_url='login')
 def checkout(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -92,6 +118,7 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 
+@login_required(login_url='login')
 def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']

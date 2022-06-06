@@ -1,0 +1,141 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .body-profile{
+        padding-top: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+
+    }
+
+    .container-card{
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+    }
+
+    .card{
+        background-color: #fff;
+        width: 30%;
+        border-radius: 33px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding: 2rem !important;
+    }
+    .top-container{
+        /* display: flex; */
+        align-items: center;
+
+    }
+    .profile-image{
+        border-radius: 10px;
+        border: 2px solid #5957f9;
+    }
+    .name{
+        padding: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #272727;
+        position: relative;
+        top: 8px;
+    }
+    .mail{
+        padding: 5px;
+        font-size: 16px;
+        color: grey;
+        position: relative;
+        top: 2px;
+    }
+    .middle-container{
+        background-color: #eee;
+        border-radius: 12px;
+
+    }
+
+    .user{
+        padding: 5px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #272727;
+
+    }
+
+    .status{
+        padding: 5px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #272727;
+    }
+
+</style>
+
+<div class="body-profile">
+
+    <div class="container-card">
+        <div class="card">
+		
+            <div class="top-container">
+                
+                <img src="{% static 'images/dev1.jpg' %}" class="img-fluid profile-image" width="150">
+                
+                <div class="ml-3">
+                    <h5 class="name">Nurulla Zholdoshov</h5>
+                    <p class="mail">nurulla@gmail.com</p>
+                </div>
+            </div>
+    
+            <div class="user-border pt-2">
+                <span class="user">Project Manager</span>
+            </div>
+            <div class="status-border pt-2">
+                <span class="status">Staff status: True</span>
+            </div>
+            
+        </div>
+    
+        <div class="card">
+            
+            <div class="top-container">
+                
+                <img src="{% static 'images/dev2.jpg' %}" class="img-fluid profile-image" width="150">
+                
+                <div class="ml-3">
+                    <h5 class="name">Nikita Malyarchuk</h5>
+                    <p class="mail">nikita@gmail.com</p>
+                </div>
+            </div>
+    
+            <div class="user-border pt-2">
+                <span class="user">Team Architect</span>
+            </div>
+            <div class="status-border pt-2">
+                <span class="status">Staff status: True</span>
+            </div>
+            
+        </div>
+    
+        <div class="card">
+            
+            <div class="top-container">
+                
+                <img src="{% static 'images/dev3.png' %}" class="img-fluid profile-image" width="150">
+                
+                <div class="ml-3">
+                    <h5 class="name">Kurbaniyaz Mambetsapaev</h5>
+                    <p class="mail">kurbaniyaz@gmail.com</p>
+                </div>
+            </div>
+    
+            <div class="user-border pt-2">
+                <span class="user">UI/UX Designer</span>
+            </div>
+            <div class="status-border pt-2">
+                <span class="status">Staff status: True</span>
+            </div>
+            
+        </div>
+    </div>
+	
+</div>
+
+{% endblock content %}

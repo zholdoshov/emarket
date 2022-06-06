@@ -1,0 +1,104 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .body-profile{
+        padding-top: 5%;
+        padding-left: 30%;
+        padding-bottom: 5%;
+
+    }
+    .card{
+        padding-left: 50px;
+        background-color: #fff;
+        width: 50%;
+        border-radius: 33px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding: 10rem !important;
+    }
+    .top-container{
+        display: flex;
+        align-items: center;
+
+    }
+    .profile-image{
+        border-radius: 10px;
+        border: 2px solid #5957f9;
+    }
+
+    .ml-3{
+        padding: 20px;
+    }
+
+    .name{
+        padding: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #272727;
+        position: relative;
+        top: 8px;
+    }
+    .mail{
+        padding: 5px;
+        font-size: 16px;
+        color: grey;
+        position: relative;
+        top: 2px;
+    }
+    .middle-container{
+        background-color: #eee;
+        border-radius: 12px;
+
+    }
+
+    .user{
+        padding: 5px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #272727;
+
+    }
+
+    .user-border{
+        padding-top: 20px;
+    }
+
+    .status-border{
+        padding-top: 20px;
+    }
+
+    .status{
+        padding: 5px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #272727;
+    }
+
+</style>
+
+<div class="body-profile">
+
+	<div class="card">
+		
+		<div class="top-container">
+			
+			<img src="{% static 'images/profile.jpg' %}" class="img-fluid profile-image" width="150">
+			
+			<div class="ml-3">
+				<h5 class="name">{{user.first_name}} {{user.last_name}}</h5>
+				<p class="mail">{{user.email}}</p>
+			</div>
+		</div>
+
+		<div class="user-border pt-2">
+			<span class="user">Username: {{user}}</span>
+		</div>
+		<div class="status-border pt-2">
+			<span class="status">Staff status: {{user.is_staff}}</span>
+		</div>
+		
+	</div>
+	
+</div>
+
+{% endblock content %}

@@ -46,7 +46,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">{{request.user}}</span>
+                    <span class="name">Hello, {{request.user.first_name}}</span>
                     <span class="profession">Welcome</span>
                 </div>
             </div>
@@ -66,21 +66,21 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{% url 'profile' %}">
                             <i class='bx bx-user icon'></i>
                             <span class="text nav-text">Profile</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{% url 'about' %}">
                             <i class='bx bx-info-circle icon'></i>
                             <span class="text nav-text">About Us</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="{% url 'login' %}">
+                        <a href="{% url 'logout' %}">
                             <i class='bx bx-log-out-circle icon'></i>
                             <span class="text nav-text">Log out</span>
                         </a>
