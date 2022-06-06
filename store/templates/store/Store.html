@@ -10,7 +10,6 @@
             <hr>
     
             <button data-product={{product.id}} data-action="add" class="add-btn update-cart text">Add to Cart</button>
-            <a class="text" style="text-decoration: none; cursor: pointer;">View</a>
             <h4  class="text price" style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
     
         </div>
@@ -34,3 +33,5 @@
     }
 </script>
 {% endblock content %}
+
+<!--@login_required(login_url='login')-->

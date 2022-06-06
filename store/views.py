@@ -1,15 +1,53 @@
 from multiprocessing import context
-from django.shortcuts import render
+import django
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 import json
 import datetime
 from .models import *
+from .forms import CreateUserForm
 
 # Create your views here.
+def register(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for ' + user)
+            return redirect('login')
+
+    context = {'form': form}
+    return render(request, 'store/register.html', context)
+
+
+def loginPage(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('store')
+
+    context = {}
+    return render(request, 'store/login.html', context)
+
+@login_required(login_url='login')
 def store(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
+        print(customer)
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
@@ -21,6 +59,7 @@ def store(request):
     products = Product.objects.all()
     context = {'products':products, 'cartItems':cartItems}
     return render(request, 'store/store.html', context)
+
 
 def cart(request):
 
@@ -37,6 +76,7 @@ def cart(request):
     context = {'items':items, 'order':order, 'cartItems':cartItems}
     return render(request, 'store/cart.html', context)
 
+
 def checkout(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -50,6 +90,7 @@ def checkout(request):
 
     context = {'items':items, 'order':order, 'cartItems':cartItems}
     return render(request, 'store/checkout.html', context)
+
 
 def updateItem(request):
     data = json.loads(request.body)
@@ -79,6 +120,7 @@ def updateItem(request):
 
 
 from django.views.decorators.csrf import csrf_exempt
+
 
 @csrf_exempt
 def processOrder(request):
