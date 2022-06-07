@@ -42,7 +42,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="{% static 'images/logo.png' %}" alt="">
+                    <a href="{% url 'store' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
                 </span>
 
                 <div class="text logo-text">
@@ -92,9 +92,8 @@
             <div class="bottom-content">
                 <li class="">
                     <a href="{% url 'cart' %}">
-                        <i class='bx bx-cart icon'></i>
-                        <span id="cart-icon" class="text nav-text">Cart:</span>
-                        <p class="text total-text" id="cart-total">{{cartItems}}</p>
+                        <i class='bx bx-cart icon'><p>{{cartItems}}</p></i>
+                        <span id="cart-icon" class="text nav-text">Cart </span>
                     </a>
                 </li>
 
