@@ -54,7 +54,7 @@ def logoutUser(request):
     return redirect('login')
 
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def store(request):
 
     if request.user.is_authenticated:
