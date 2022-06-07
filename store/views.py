@@ -20,7 +20,8 @@ def register(request):
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
             if form.is_valid():
-                form.save()
+                new_user = form.save()
+                Customer.objects.create(user=new_user)
                 user = form.cleaned_data.get('username')
                 messages.success(request, 'Account was created for ' + user)
                 return redirect('login')
@@ -59,7 +60,6 @@ def store(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        print(customer)
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
